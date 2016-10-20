@@ -35,9 +35,9 @@ public class MainForeCast {
 
             Element temps = (Element)nList.item(i);
 
-            String Tiempo = temps.getElementsByTagName("symbol").item(0).getAttributes().getNamedItem("name").getTextContent();
-            String Temperatura;
-            String Velocidad;
+            String tiempo = temps.getElementsByTagName("symbol").item(0).getAttributes().getNamedItem("name").getTextContent();
+            String temperatura = temps.getElementsByTagName("temperature").item(i).getAttributes().getNamedItem("max").getTextContent();
+            String velocidad;
 
 
            // System.out.println("El llibre amb totiol"+ llibre.getElementsByTagName("titulo").item(0).getTextContent()+
