@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class MainForeCast {
     //Variables
-    
+
     private static ArrayList <Temps> tie = new ArrayList<>();
 
 
@@ -31,7 +31,7 @@ public class MainForeCast {
         NodeList nlocation = doc.getElementsByTagName("location");
 
         Element localizacion = (Element)nlocation.item(0);
-        System.out.println(localizacion.getElementsByTagName("name").item(0).getAttributes());
+
 
         NodeList nList = doc.getElementsByTagName("time");
 
@@ -43,23 +43,29 @@ public class MainForeCast {
             Temps t = new Temps();
 
             String tiempo = temps.getElementsByTagName("symbol").item(0).getAttributes().getNamedItem("name").getTextContent();
-            String temperaturamax = temps.getElementsByTagName("temperature").item(i).getAttributes().getNamedItem("max").getTextContent();
-            String temperaturamin = temps.getElementsByTagName("temperature").item(i).getAttributes().getNamedItem("min").getTextContent();
-            String velocidad =  temps.getElementsByTagName("windSpeed").item(i).getAttributes().getNamedItem("name").getTextContent();
+            String temperaturamax = temps.getElementsByTagName("temperature").item(0).getAttributes().getNamedItem("max").getTextContent();
+            String temperaturamin = temps.getElementsByTagName("temperature").item(0).getAttributes().getNamedItem("min").getTextContent();
+            String velocidad =  temps.getElementsByTagName("windSpeed").item(0).getAttributes().getNamedItem("name").getTextContent();
 
+            //Los trasducimos
             Traductor(tiempo);
             TraductorVelocidad(velocidad);
 
+            //los añadimos al objeto y  a la array de objetos
             t.setTiempo(tiempo);
             t.setTemperaturamax(temperaturamax);
             t.setTemperaturamin(temperaturamin);
             t.setVelocidad(velocidad);
-
             tie.add(t);
-
        }
 
+        System.out.println(tie.toString());
+
     }
+
+
+
+
 
     //Traductor tiempo
 
@@ -86,7 +92,7 @@ public class MainForeCast {
         return tiempo;
     }
 
-    //Traductor de velocodades
+    //Traductor de velocidades
 
     public static String TraductorVelocidad (String velocidad) {
         if(velocidad.equalsIgnoreCase("Gentle Breeze")){
