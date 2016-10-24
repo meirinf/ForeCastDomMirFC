@@ -41,15 +41,13 @@ public class MainForeCast {
 
             Element temps = (Element)nList.item(i);
             Temps t = new Temps();
+            String Resum;
 
             String tiempo = temps.getElementsByTagName("symbol").item(0).getAttributes().getNamedItem("name").getTextContent();
             String temperaturamax = temps.getElementsByTagName("temperature").item(0).getAttributes().getNamedItem("max").getTextContent();
             String temperaturamin = temps.getElementsByTagName("temperature").item(0).getAttributes().getNamedItem("min").getTextContent();
             String velocidad =  temps.getElementsByTagName("windSpeed").item(0).getAttributes().getNamedItem("name").getTextContent();
 
-            //Los trasducimos
-            Traductor(tiempo);
-            TraductorVelocidad(velocidad);
 
             //los añadimos al objeto y  a la array de objetos
             t.setTiempo(tiempo);
@@ -57,61 +55,18 @@ public class MainForeCast {
             t.setTemperaturamin(temperaturamin);
             t.setVelocidad(velocidad);
             tie.add(t);
+
+            System.out.println("El tiempo es: " + t.getTiempo()+ " || La temperatura max: " + t.getTemperaturamax() + " || La temperatura min es: " + t.getTemperaturamin() + " || La velocidad del viento: " + t.getVelocidad());
+
        }
 
-        System.out.println(tie.toString());
+
+
+
+
 
     }
 
-
-
-
-
-    //Traductor tiempo
-
-    public static String Traductor(String tiempo) {
-        if (tiempo.equalsIgnoreCase("scattered clouds")){
-            tiempo = "nuves dispersas";
-        }
-        if(tiempo.equalsIgnoreCase("broken clouds")){
-            tiempo = "interbalos nuvosos";
-        }
-        if(tiempo.equalsIgnoreCase("light rain")){
-            tiempo = "llovizna";
-        }
-        if(tiempo.equalsIgnoreCase("few clouds")){
-            tiempo = "pocas nubes";
-        }
-
-        if(tiempo.equalsIgnoreCase("overcast clouds")){
-            tiempo = "nublado";
-        }
-        if(tiempo.equalsIgnoreCase("sky is clear")){
-            tiempo = "soleado";
-        }
-        return tiempo;
-    }
-
-    //Traductor de velocidades
-
-    public static String TraductorVelocidad (String velocidad) {
-        if(velocidad.equalsIgnoreCase("Gentle Breeze")){
-            velocidad = "suave brisa";
-        }
-        if(velocidad.equalsIgnoreCase("Light breeze")){
-            velocidad = "Brisa ligera";
-        }
-        if(velocidad.equalsIgnoreCase("Calm")){
-            velocidad = "Calma";
-        }
-        if(velocidad.equalsIgnoreCase("Moderate breeze")){
-            velocidad = "Brisas moderadas";
-        }
-        if(velocidad.equalsIgnoreCase("strong wind")){
-            velocidad = "viento fuerte";
-        }
-        return velocidad;
-    }
 
 
 }
