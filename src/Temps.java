@@ -6,6 +6,7 @@ public class Temps {
     public String temperaturamax;
     public String temperaturamin;
     public String velocidad;
+    public String viento;
 
     public Temps() {
     }
@@ -26,6 +27,10 @@ public class Temps {
 
     public String getVelocidad() {
         return velocidad;
+    }
+
+    public String getViento() {
+        return viento;
     }
 
     //setters
@@ -54,6 +59,25 @@ public class Temps {
         this.tiempo = tiempo;
     }
 
+    public void setViento(String viento) {
+        if(viento.equalsIgnoreCase("Gentle Breeze")){
+            viento = "suave brisa";
+        }
+        if(viento.equalsIgnoreCase("Light breeze")){
+            viento = "Brisa ligera";
+        }
+        if(viento.equalsIgnoreCase("Calm")){
+            viento = "Calma";
+        }
+        if(viento.equalsIgnoreCase("Moderate breeze")){
+            viento = "Brisas moderadas";
+        }
+        if(viento.equalsIgnoreCase("strong wind")){
+           viento = "viento fuerte";
+        }
+        this.viento = viento;
+    }
+
     public void setTemperaturamax(String temperaturamax) {
          this.temperaturamax = temperaturamax;
     }
@@ -63,22 +87,10 @@ public class Temps {
     }
     //Traduce nada mas pasado el objeto
     public void setVelocidad(String velocidad) {
-
-        if(velocidad.equalsIgnoreCase("Gentle Breeze")){
-            velocidad = "suave brisa";
-        }
-        if(velocidad.equalsIgnoreCase("Light breeze")){
-            velocidad = "Brisa ligera";
-        }
-        if(velocidad.equalsIgnoreCase("Calm")){
-            velocidad = "Calma";
-        }
-        if(velocidad.equalsIgnoreCase("Moderate breeze")){
-            velocidad = "Brisas moderadas";
-        }
-        if(velocidad.equalsIgnoreCase("strong wind")){
-            velocidad = "viento fuerte";
-        }
+            double ms=  Double.parseDouble(velocidad);
+            ms = ms * 3.6;
+            ms =Math.round(ms*100d)/100d;
+            velocidad = Double.toString(ms);
         this.velocidad = velocidad;
     }
 }

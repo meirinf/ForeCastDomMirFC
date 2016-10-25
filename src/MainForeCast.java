@@ -46,17 +46,21 @@ public class MainForeCast {
             String tiempo = temps.getElementsByTagName("symbol").item(0).getAttributes().getNamedItem("name").getTextContent();
             String temperaturamax = temps.getElementsByTagName("temperature").item(0).getAttributes().getNamedItem("max").getTextContent();
             String temperaturamin = temps.getElementsByTagName("temperature").item(0).getAttributes().getNamedItem("min").getTextContent();
-            String velocidad =  temps.getElementsByTagName("windSpeed").item(0).getAttributes().getNamedItem("name").getTextContent();
+            String velocidad =  temps.getElementsByTagName("windSpeed").item(0).getAttributes().getNamedItem("mps").getTextContent();
+            String viento = temps.getElementsByTagName("windSpeed").item(0).getAttributes().getNamedItem("name").getTextContent();
+            
 
 
             //los añadimos al objeto y  a la array de objetos
             t.setTiempo(tiempo);
             t.setTemperaturamax(temperaturamax);
             t.setTemperaturamin(temperaturamin);
+            t.setViento(viento);
             t.setVelocidad(velocidad);
             tie.add(t);
 
-            System.out.println("El tiempo es: " + t.getTiempo()+ " || La temperatura max: " + t.getTemperaturamax() + " || La temperatura min es: " + t.getTemperaturamin() + " || La velocidad del viento: " + t.getVelocidad());
+            System.out.println("El tiempo es: " + t.getTiempo()+ " || La temperatura max: " + t.getTemperaturamax() + " || La temperatura min es: " + t.getTemperaturamin() +" || viento  "+t.getViento()+ " || La velocidad del viento: " + t.getVelocidad());
+
 
        }
 
